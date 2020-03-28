@@ -9,7 +9,5 @@ class UserService(ServiceBase):
         return to_dict(ret)
 
     def find_by_id(self, id):
-        users = self.session.query(User).\
-            filter(User.id == id).\
-            first()
+        users = self.session.query(User).filter(User.id == id).first()
         return to_dict(users)

@@ -1,16 +1,31 @@
 from apps.db import Base
-from sqlalchemy import Column, Integer, String, Text, text, DATETIME, DATE
+from sqlalchemy import Column, VARCHAR, DATETIME, CHAR
+from sqlalchemy.orm import relationship
 from datetime import datetime
-import json
 
 
 class User(Base):
     __tablename__ = "users"
-    id = Column('id', Integer, primary_key=True, autoincrement=True)
-    username = Column('username', String(32))
-    mailaddress = Column('mailaddress', String(255))
-    password = Column('password', String(255))
-    birthday = Column('birthday', DATE)
-    role = Column('role', String(255))
-    created_at = Column('created_at', DATETIME, nullable=False, default=datetime.now)
-    updated_at = Column('updated_at', DATETIME, nullable=False, default=datetime.now, onupdate=datetime.now)
+    id = Column(
+        'id',
+        CHAR(20),
+        nullable=False,
+        primary_key=True,
+        autoincrement=False,
+        unique=True)
+    username = Column('username', VARCHAR(255), nullable=False, unique=True)
+    mailaddress = Column('mailaddress', VARCHAR(255))
+    password = Column('password', VARCHAR(255), nullable=False)
+    created_at = Column(
+        'created_at',
+        DATETIME,
+        nullable=False,
+        default=datetime.now)
+    updated_at = Column(
+        'updated_at',
+        DATETIME,
+        nullable=False,
+        default=datetime.now,
+        onupdate=datetime.now)
+    userconfig = relationship('UserConfig', backref='user', lazy=True)
+    oanda = relationship('Oanda', backref='user', lazy=True)

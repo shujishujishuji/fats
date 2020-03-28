@@ -13,7 +13,7 @@ class DBProp:
         database = props.get('db', 'database')
         self._url = f'{dialect}+{driver}://{username}:{password}@{host}:{port}/{database}'
         self._pool_size = int(props.get('db', 'pool_size'))
-        self._max_overflow = props.get('db', 'max_overflow')
+        self._max_overflow = int(props.get('db', 'max_overflow'))
         self._isolation_level = props.get('db', 'isolation_level')
 
     @property
@@ -31,7 +31,3 @@ class DBProp:
     @property
     def isolation_level(self):
         return self._isolation_level
-
-    @property
-    def pool_size(self):
-        return self._pool_size

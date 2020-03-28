@@ -23,9 +23,8 @@ engine = create_engine(
     )
 
 Base = declarative_base()
-Session = scoped_session(sessionmaker(bind=engine))
 
-logging.getLogger('sqlalchemy.engine').setLevel(logging.INFO)
+Session = scoped_session(sessionmaker(bind=engine))
 
 
 def row_to_dict(rowobj):
