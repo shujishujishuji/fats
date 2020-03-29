@@ -15,6 +15,6 @@ class UserConfig(Base):
     symbol = Column('symbol', CHAR(7))
     switch = Column(
         'auto tradeing switch',
-        BOOLEAN(255),
+        BOOLEAN,
         nullable=False,
-        default=0)
+        default=False)

@@ -2,6 +2,8 @@ access:
 127.0.0.1:5042
 
 tasks:
+make user database
+streaming error
 login setting
 make stream
 connect database
