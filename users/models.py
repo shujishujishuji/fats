@@ -27,5 +27,5 @@ class User(Base):
         nullable=False,
         default=datetime.now,
         onupdate=datetime.now)
-    userconfig = relationship('UserConfig', backref='user', lazy=True)
-    oanda = relationship('Oanda', backref='user', lazy=True)
+    userconfig = relationship('UserConfig', backref='users', lazy=True)
+    oanda = relationship('Oanda', backref='users', lazy=True)
